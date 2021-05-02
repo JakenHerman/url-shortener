@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Linker - Page Not Found</title>
+{% endblock %}
+
+{% block main %}
+<h1>Uh oh</h1>
+<h2>We couldn't find that page..</h2>
+
+<p>Try again, maybe you typed something wrong. Visit the homepage to try again</p>
+
+<p><a href="{{ url_for('urlshort.home') }}">Home</a></p>
+{% endblock %}

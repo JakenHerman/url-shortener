@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Linker</title>
+{% endblock %}
+
+{% block main %}
+<h1>URL Shortener</h1>
+
+<form action='your-url' method='POST'>
+    <label for='url'>Website URL</label>
+    <input type='url' name='url' value='' required aria-required='true' />
+
+    <br />
+
+    <label for='code'>Short Name URL</label>
+    <input type='text' name='code' value='' required aria-required='true' />
+
+    <br />
+
+    <input type='submit' value='Shorten' />
+</form>
+
+<form action='your-url' method='POST' enctype="multipart/form-data">
+    <label for='file'>File</label>
+    <input type='file' name='file' value='' required aria-required='true' />
+
+    <br />
+
+    <label for='code'>Short Name</label>
+    <input type='text' name='code' value='' required aria-required='true' />
+
+    <br />
+
+    <input type='submit' value='Shorten' />
+</form>
+
+{% if codes %}
+<h2>Links created</h2>
+<ul>
+    {% for code in codes %}
+    <a href="{{ url_for('urlshort.redirect_to_url', code=code) }}">
+        <li>{{ code }} </li>
+    </a>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
